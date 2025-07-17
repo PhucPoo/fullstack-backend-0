@@ -1,0 +1,27 @@
+{
+  "name": "full-backend-zero",
+  "version": "1.0.0",
+  "description": "HP Fullstack backend zero",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PhucPoo/fullstack-backend-0.git"
+  },
+  "keywords": [
+    "nodejs",
+    "react"
+  ],
+  "author": "HP",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PhucPoo/fullstack-backend-0/issues"
+  },
+  "homepage": "https://github.com/PhucPoo/fullstack-backend-0#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
