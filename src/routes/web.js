@@ -1,19 +1,17 @@
 const e = require('express')
 const express = require('express')
+const { getHome, getAbc, getHp, getSample } = require('../controllers/homeCotroller')
+
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-  res.send('Hello HP vua! and nodemon')
-})
-router.get('/abc', (req, res) => {
-  res.send('Hello !')
-})
-router.get('/hp', (req, res) => {
-  res.send('<h1>HP dep zai</h1>')
-})
+router.get('/', getHome)
 
-router.get('/sample', (req, res) => {
-  res.render('sample.ejs')
-})
+
+router.get('/abc', getAbc)
+
+
+router.get('/hp', getHp)
+
+router.get('/sample', getSample)
 module.exports = router
