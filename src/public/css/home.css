@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+fieldset{
+    border: 4px solid #0e0d0d ;
+    pading: 20px;
+}
+legend{
+    font-size: 40px;
+}
+label{
+    font-size: 20px;
+    padding: 10px;
+    display: inline-block;
+    
+}
+input{
+    width: 30%;
+
+}
+input[type= city]{
+    width: 30%;
+    
+}
+button{
+     width: 5%;
+    padding: 10px;
+}
+label[for=city]{
+    padding-right:22px ;
+}
+.input_save{
+    padding: 10px;
+    
+}
+

@@ -6,15 +6,21 @@ const pool = require('../config/database')
 
 
 const getHome = ('/', async (req, res) => {
-  try {
-    const result = await pool.query('SELECT * FROM users');
-    console.table(result.rows);
-    res.json(result.rows);
-  } catch (err) {
-    console.error('Lỗi truy vấn:', err.stack);
-    res.status(500).send('Lỗi server');
-  }
+//   try {
+//     const result = await pool.query('SELECT * FROM users');
+//     console.table(result.rows);
+//     res.json(result.rows);
+//   } catch (err) {
+//     console.error('Lỗi truy vấn:', err.stack);
+//     res.status(500).send('Lỗi server');
+//   }
+return res.render('home.ejs')
 });
+
+const postCreateUser = (req, res) => {
+    console.log('>>>check req.body', req.body)
+    res.send('Create user route')
+}
 
 
 
@@ -30,5 +36,5 @@ const getSample = (req, res) => {
     res.render('sample.ejs')
 }
 module.exports = {
-    getHome, getAbc, getHp, getSample
+    getHome, getAbc, getHp, getSample, postCreateUser
 }

@@ -11,6 +11,10 @@ const pool = require('./config/database')
 const app = express()
 const port = process.env.PORT || 8081
 
+// config request body parser
+app.use(express.json())
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
 const hostname = process.env.HOST_NAME
 
 configViewEngine(app)
