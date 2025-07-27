@@ -7,8 +7,9 @@ const { get } = require('../routes/web')
 
 
 
-const getHome = ('/', async (req, res) => {
-    let result=getAllUsers(req, res)
+const getHome =  async (req, res) => {
+    let result = await getAllUsers(req, res)
+    console.log(result);
     
     //   try {
     
@@ -19,8 +20,8 @@ const getHome = ('/', async (req, res) => {
     //     console.error('Lỗi truy vấn:', err.stack);
     //     res.status(500).send('Lỗi server');
     //   }
-    return res.render('home.ejs',{listUsers: result})
-});
+    return res.render('home.ejs',{ listUsers: result })
+}
 
 const postCreateUser = async (req, res) => {
 
@@ -57,6 +58,9 @@ const getSample = (req, res) => {
 const getCreatePage = (req, res) => {
     res.render('create.ejs')
 }
+const getEditPage = (req, res) => {
+    res.render('edit.ejs')
+}
 module.exports = {
-    getHome, getAbc, getHp, getSample, postCreateUser, getCreatePage
+    getHome, getAbc, getHp, getSample, postCreateUser, getCreatePage, getEditPage
 }
