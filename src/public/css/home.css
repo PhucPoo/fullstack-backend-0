@@ -112,3 +112,6 @@ label[for=city] {
     color: #04AA6D;
 }
 
+.d-none {
+    display: none;
+}

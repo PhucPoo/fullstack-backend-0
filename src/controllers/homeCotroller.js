@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const pool = require('../config/database')
-const { getAllUsers } = require('../service/CRUDService')
+const { getAllUsers, updateUserById } = require('../service/CRUDService')
 const { get } = require('../routes/web')
 
 
@@ -43,6 +43,7 @@ const postCreateUser = async (req, res) => {
 
 
 
+
 const getAbc = (req, res) => {
     res.send('Hello !')
 }
@@ -58,9 +59,31 @@ const getSample = (req, res) => {
 const getCreatePage = (req, res) => {
     res.render('create.ejs')
 }
-const getEditPage = (req, res) => {
-    res.render('edit.ejs')
+const getEditPage = async (req, res) => {
+    const id = req.params.id;
+    const result = await pool.query('SELECT * FROM users WHERE id = $1 ', [id]);
+    let user = result.rows && result.rows.length > 0 ? result.rows[0] : {}; 
+    res.render('edit.ejs', { userEdit: user } );
+    console.log(user);
+
+}
+const postUpdateUser = async (req, res) => {
+    let id = req.body.id
+    let email = req.body.email
+    let name = req.body.name
+    let city = req.body.city
+
+    updateUserById( email, name, city, id)
+    // pool.query('INSERT INTO users(email, name, city) VALUES($1, $2, $3)', [email, name, city])
+
+    // res.send('Create user succeed !')
+    
+   
+    // console.log(rows[0]);
+    console.log( email, name, city,id);
+  
+    res.redirect('/');
 }
 module.exports = {
-    getHome, getAbc, getHp, getSample, postCreateUser, getCreatePage, getEditPage
+    getHome, getAbc, getHp, getSample, postCreateUser, getCreatePage, getEditPage, postUpdateUser, updateUserById
 }

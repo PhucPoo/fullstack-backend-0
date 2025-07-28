@@ -26,22 +26,22 @@
                 <th>Action</th>
             </tr>
 
-            <% listUsers.forEach((user, i)=> { %>
+            <% listUsers.forEach((user)=> { %>
                 <tr>
                     <td>
-                        <%= listUsers[i].id %>
+                        <%= user.id %>
                     </td>
                     <td>
-                        <%= listUsers[i].email %>
+                        <%= user.email %>
                     </td>
                     <td>
-                        <%= listUsers[i].name %>
+                        <%= user.name %>
                     </td>
                     <td>
-                        <%= listUsers[i].city %>
+                        <%= user.city %>
                     </td>
                     <td>
-                        <a href="/edit">Edit</a>
+                        <a href="/edit/<%=user.id %>">Edit</a>
                         <button>Delete</button>
                     </td>
                 </tr>
