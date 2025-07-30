@@ -73,7 +73,7 @@ const postUpdateUser = async (req, res) => {
 }
 
 
-const postDeleteUser = async (req, res) => {
+const getDeleteUser = async (req, res) => {
     const id = req.params.id;
     const result = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
     let user = result.rows && result.rows.length > 0 ? result.rows[0] : {}; 
@@ -91,5 +91,5 @@ const postRemoveUser = async (req, res) => {
     res.redirect('/');
 }
 module.exports = {
-    getHome,  postCreateUser, getCreatePage, getEditPage, postUpdateUser, updateUserById, postDeleteUser, postRemoveUser
+    getHome,  postCreateUser, getCreatePage, getEditPage, postUpdateUser, updateUserById, getDeleteUser, postRemoveUser
 }
