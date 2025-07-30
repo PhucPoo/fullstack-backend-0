@@ -38,23 +38,10 @@ const postCreateUser = async (req, res) => {
     );
     console.log(rows[0]);
   
-    res.send('Create user succeed !')
+    res.redirect('/');
 }
 
 
-
-
-const getAbc = (req, res) => {
-    res.send('Hello !')
-}
-
-const getHp = (req, res) => {
-    res.send('<h1>HP dep zai</h1>')
-}
-
-const getSample = (req, res) => {
-    res.render('sample.ejs')
-}
 
 const getCreatePage = (req, res) => {
     res.render('create.ejs')
@@ -73,17 +60,36 @@ const postUpdateUser = async (req, res) => {
     let name = req.body.name
     let city = req.body.city
 
-    updateUserById( email, name, city, id)
+    updateUserById( id ,email, name, city)
     // pool.query('INSERT INTO users(email, name, city) VALUES($1, $2, $3)', [email, name, city])
 
     // res.send('Create user succeed !')
     
    
     // console.log(rows[0]);
-    console.log( email, name, city,id);
+    console.log(id, email, name, city);
+  
+    res.redirect('/');
+}
+
+
+const postDeleteUser = async (req, res) => {
+    const id = req.params.id;
+    const result = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
+    let user = result.rows && result.rows.length > 0 ? result.rows[0] : {}; 
+    res.render('delete.ejs', { userEdit: user } );
+}
+const postRemoveUser = async (req, res) => {
+    let id = req.body.id
+    let email = req.body.email
+
+    await pool.query('DELETE FROM users WHERE id = $1', [id])
+    // res.send('Create user succeed !')
+    
+    console.log(id, email);
   
     res.redirect('/');
 }
 module.exports = {
-    getHome, getAbc, getHp, getSample, postCreateUser, getCreatePage, getEditPage, postUpdateUser, updateUserById
+    getHome,  postCreateUser, getCreatePage, getEditPage, postUpdateUser, updateUserById, postDeleteUser, postRemoveUser
 }
